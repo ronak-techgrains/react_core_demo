@@ -1,5 +1,0 @@
-export const sidebarWrapperHeight = Object.freeze('calc(100vh - 115px)')
-export const emptyArray: readonly unknown[] = Object.freeze([])
-export const emptyObject = Object.freeze({})
-export const emptyString = Object.freeze('')
-export const emptyFunction = Object.freeze(() => {})
