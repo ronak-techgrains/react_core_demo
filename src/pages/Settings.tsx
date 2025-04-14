@@ -7,13 +7,22 @@ const Settings: React.FC = () => {
   const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
   const { t, i18n } = useTranslation();
 
+  const languageOptions = [
+    { value: "en", label: "English" },
+    { value: "fr", label: "Français" },
+    { value: "ar", label: "العربية" },
+    { value: "gu", label: "ગુજરાતી" },
+  ];
+
   // Ensure direction is set when language changes
   useEffect(() => {
     const dir = i18n.language === "ar" ? "rtl" : "ltr";
     document.documentElement.dir = dir;
   }, [i18n.language]);
 
-  const handleLanguageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleLanguageChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
     const selectedLang = event.target.value;
     i18n.changeLanguage(selectedLang);
     localStorage.setItem("i18nextLng", selectedLang);
@@ -41,10 +50,11 @@ const Settings: React.FC = () => {
           value={i18n.language}
           onChange={handleLanguageChange}
         >
-          <option value="en">English</option>
-          <option value="fr">Français</option>
-          <option value="ar">العربية</option>
-          <option value="gu">ગુજરાતી</option>
+          {languageOptions.map((lang) => (
+            <option key={lang.value} value={lang.value}>
+              {lang.label}
+            </option>
+          ))}
         </select>
       </div>
     </>

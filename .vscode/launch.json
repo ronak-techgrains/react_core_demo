@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "firefox",
+      "request": "launch",
+      "name": "Launch React Vite App (Firefox)",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/src",
+      "reAttach": true,
+      "pathMappings": [
+        {
+          "url": "webpack:///",
+          "path": "${workspaceFolder}/"
+        }
+      ]
+    }
+  ]
+}
