@@ -39,9 +39,9 @@ const Home: React.FC = () => {
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     >
   ) => {
-    const { name, value, type, checked } = e.target;
-    if (type === "checkbox") {
-      setFormData({ ...formData, [name]: checked });
+    const { name, value, type } = e.target;
+    if (type === "checkbox" && e.target instanceof HTMLInputElement) {
+      setFormData({ ...formData, [name]: e.target.checked });
     } else {
       setFormData({ ...formData, [name]: value });
     }
@@ -79,16 +79,14 @@ const Home: React.FC = () => {
       <h1 className="text-3xl font-bold mb-6">{t("home")}</h1>
       <button
         className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded mb-4"
-        onClick={() => setShowForm(true)}
-      >
+        onClick={() => setShowForm(true)}>
         + Add User
       </button>
 
       {showForm && (
         <form
           onSubmit={handleSubmit}
-          className="bg-white shadow-md rounded p-6 grid gap-4 max-w-2xl"
-        >
+          className="bg-white shadow-md rounded p-6 grid gap-4 max-w-2xl">
           <input
             className="border p-2 rounded"
             name="name"
@@ -136,8 +134,7 @@ const Home: React.FC = () => {
             name="role"
             className="border p-2 rounded"
             value={formData.role}
-            onChange={handleChange}
-          >
+            onChange={handleChange}>
             {roles.map((role) => (
               <option key={role} value={role}>
                 {role}
@@ -208,8 +205,7 @@ const Home: React.FC = () => {
           <div className="flex justify-end">
             <button
               type="submit"
-              className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded"
-            >
+              className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">
               Submit
             </button>
           </div>

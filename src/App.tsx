@@ -7,21 +7,54 @@ const App: React.FC = () => {
   const { t } = useTranslation();
   return (
     <Router>
-      <nav style={{ padding: "1rem", background: "#f0f0f0" }}>
-        <Link to="/" style={{ marginRight: "1rem" }}>
-          {t("home")}
-        </Link>
-        <Link to="/about" style={{ marginRight: "1rem" }}>
-          {t("about")}
-        </Link>
-        <Link to="/settings" style={{ marginRight: "1rem" }}>
-          {t("settings")}
-        </Link>
-      </nav>
+      <div style={{ display: "flex", minHeight: "100vh" }}>
+        {/* Sidebar */}
+        <nav
+          style={{
+            width: "220px",
+            background: "#1e293b", // dark blue/gray
+            padding: "2rem 1rem",
+            color: "#fff",
+            display: "flex",
+            flexDirection: "column",
+            boxShadow: "2px 0 5px rgba(0,0,0,0.1)",
+          }}>
+          <h2 style={{ color: "#38bdf8", marginBottom: "2rem" }}>MyApp</h2>
 
-      <AppRoutes />
+          <Link to="/" style={linkStyle}>
+            {t("home")}
+          </Link>
+          <Link to="/about" style={linkStyle}>
+            {t("about")}
+          </Link>
+          <Link to="/settings" style={linkStyle}>
+            {t("settings")}
+          </Link>
+        </nav>
+
+        {/* Main Content Area */}
+        <main
+          style={{
+            flex: 1,
+            padding: "2rem",
+            background: "#f9fafb",
+            width: "100rem",
+          }}>
+          <AppRoutes />
+        </main>
+      </div>
     </Router>
   );
+};
+
+const linkStyle = {
+  color: "#fff",
+  textDecoration: "none",
+  padding: "0.75rem 1rem",
+  marginBottom: "0.5rem",
+  borderRadius: "8px",
+  transition: "background 0.3s",
+  fontWeight: "500",
 };
 
 export default App;
