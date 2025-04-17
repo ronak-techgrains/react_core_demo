@@ -4,11 +4,14 @@ import "./index.css";
 import App from "./App.tsx";
 import { DarkModeProvider } from "./context/DarkModeContext";
 import "./i18n";
+import { SnackbarProvider } from "notistack";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <DarkModeProvider>
-      <App />
+      <SnackbarProvider>
+        <App />
+      </SnackbarProvider>
     </DarkModeProvider>
   </StrictMode>
 );

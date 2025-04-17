@@ -87,6 +87,7 @@ const Home: React.FC = () => {
         <form
           onSubmit={handleSubmit}
           className="bg-white shadow-md rounded p-6 grid gap-4 max-w-2xl">
+          
           <input
             className="border p-2 rounded"
             name="name"
@@ -95,6 +96,7 @@ const Home: React.FC = () => {
             onChange={handleChange}
             required
           />
+
           <input
             className="border p-2 rounded"
             name="age"
@@ -104,6 +106,7 @@ const Home: React.FC = () => {
             onChange={handleChange}
             required
           />
+
           <input
             className="border p-2 rounded"
             name="email"
